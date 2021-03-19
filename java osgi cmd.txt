@@ -1,0 +1,16 @@
+C:\Cameo_Systems_Modeler_190_sp2_no_install>java -Xmx1200M -Xss1024K -XX:PermSiz
+e=60M -XX:MaxPermSize=200M -cp lib/com.nomagic.osgi.launcher-17.0.5-SNAPSHOT.jar
+;lib/bundles/org.eclipse.osgi_3.12.50.v20170928-1321.jar;lib/bundles/com.nomagic
+.magicdraw.osgi.fragment_1.0.0.201903082028.jar;lib/md_api.jar;lib/md_common_api
+.jar;lib/md.jar;lib/md_common.jar;lib/jna.jar -Dmd.class.path=file:bin/csm.prope
+rties#CLASSPATH -Dcom.nomagic.osgi.config.dir=configuration -Desi.system.config=
+data/application.conf -Dlogback.configurationFile=data/logback.xml -Dcom.nomagic
+.magicdraw.launcher=com.nomagic.magicdraw.commandline.CommandLineActionLauncher
+-Dcom.nomagic.magicdraw.commandline.action=cameo2rdfplugin.CommandLineActionExam
+ple com.nomagic.osgi.launcher.ProductionFrameworkLauncher C:/Cameo_Systems_Model
+er_190_sp2_no_install/projects/GregModel2.mdzip
+
+
+One line version
+
+java -Xmx1200M -Xss1024K -XX:PermSize=60M -XX:MaxPermSize=200M -cp lib/com.nomagic.osgi.launcher-17.0.5-SNAPSHOT.jar;lib/bundles/org.eclipse.osgi_3.12.50.v20170928-1321.jar;lib/bundles/com.nomagic.magicdraw.osgi.fragment_1.0.0.201903082028.jar;lib/md_api.jar;lib/md_common_api.jar;lib/md.jar;lib/md_common.jar;lib/jna.jar -Dmd.class.path=file:bin/csm.properties#CLASSPATH -Dcom.nomagic.osgi.config.dir=configuration -Desi.system.config=data/application.conf -Dlogback.configurationFile=data/logback.xml -Dcom.nomagic.magicdraw.launcher=com.nomagic.magicdraw.commandline.CommandLineActionLauncher-Dcom.nomagic.magicdraw.commandline.action=cameo2rdfplugin.CommandLineActionExample com.nomagic.osgi.launcher.ProductionFrameworkLauncher C:/Cameo_Systems_Modeler_190_sp2_no_install/projects/GregModel2.mdzip

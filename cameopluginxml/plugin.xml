@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="com.koneksys.rdfizer.cameo2rdfplugin" name="Cameo to RDF Plugin" version="0.1" provider-name="Koneksys" class="cameo2rdfplugin.Cameo2RDFPlugin">
+    <requires>
+        <api version="1.0"/>
+    </requires>
+    
+	
+	
+	<runtime>
+		<library name="cameo2rdfplugin-0.1.jar"/>
+		<library name="lib/spring-web-5.3.1.jar"/>
+		<library name="lib/spring-beans-5.3.1.jar"/>
+		<library name="lib/spring-core-5.3.1.jar"/>
+		<library name="lib/spring-jcl-5.3.1.jar"/>		
+	</runtime>
+	
+	
+	
+</plugin>

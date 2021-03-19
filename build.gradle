@@ -1,0 +1,122 @@
+
+plugins {
+    // Apply the java-library plugin to add support for Java Library
+    id 'java-library'
+    id 'net.linguica.maven-settings' version '0.5'
+}
+
+apply plugin: 'java' 
+apply plugin: 'maven-publish' 
+ 
+dependencies {
+	compile group: 'org.springframework', name: 'spring-web', version: '5.3.1'
+} 
+ 
+publishing { 
+    publications { 
+        myPublication(MavenPublication) { 
+            groupId 'com.koneksys.rdfizer' 
+            artifactId 'cameo2rdfplugin' 
+            version '0.6' 
+            artifact 'build/pluginzip/cameo2rdfplugin.zip' 
+        } 
+    } 
+
+    // Repositories *to* which Gradle can publish artifacts 
+    repositories { 
+        maven {
+    		
+		}
+    } 
+} 
+ 
+// Repositories *from* which Gradle can download dependencies; it's the same as above in this example
+repositories { 
+    maven {
+    	
+	}   
+} 
+
+
+
+
+
+
+
+
+
+dependencies {    
+	compileOnly fileTree(dir: System.getenv('CAMEO_INSTALL_DIR') + '/lib', include: '**/*.jar')
+    compileOnly fileTree(dir: System.getenv('CAMEO_INSTALL_DIR') + '/plugins', include: '**/*.jar')
+}
+
+//Creates a jar file with the compiled files
+jar {
+   baseName = 'cameo2rdfplugin'
+   version = '0.1'
+   manifest {
+      attributes("Implementation-Title": "cameo2rdfplugin",
+                 "Implementation-Version": 0.1)
+   }
+   //Next line creates a fat jar
+   //from { configurations.compileClasspath.filter{ it.exists() }.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+
+
+//Defines task to copy files
+task copyJar (type: Copy){
+    //Copy files of the 'somefiles directory'
+    from 'build/libs'
+    //Into the current directory
+    into 'build/plugins/cameo2rdfplugin'
+}
+
+//Defines task to copy files
+task copyPluginXML (type: Copy){
+    //Copy files of the 'somefiles directory'
+    from 'cameopluginxml/plugin.xml'
+    //Into the current directory
+    into 'build/plugins/cameo2rdfplugin'
+}
+
+//Defines task to copy files
+task copyLibs (type: Copy){
+    //Copy files of the 'somefiles directory'
+    from 'cameopluginxml/lib'
+    //Into the current directory
+    into 'build/plugins/cameo2rdfplugin/lib'
+}
+
+task archivePlugin(type: Zip) {
+   from 'build/plugins/cameo2rdfplugin/'
+   include "lib/**"
+   include '*'
+   
+   
+   archiveName 'cameo2rdfplugin.zip'
+   destinationDir(file('build/pluginzip/'))
+}
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+//Execute the copy files task after performing the build
+build.finalizedBy(copyJar)
+build.finalizedBy(copyPluginXML)
+build.finalizedBy(copyLibs)
+build.finalizedBy(archivePlugin)
+//build.finalizedBy(finalize2)
+
+
